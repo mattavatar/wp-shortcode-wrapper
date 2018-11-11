@@ -72,10 +72,16 @@ class Wp_Shortcode_Wrapper_Shortcodes {
         $this->version = $version;
     }
 
-    function shortcode_wrapper( $atts, $content = null ) 
+    public function shortcode_wrapper( $atts, $content = null ) 
     {
-        extract( shortcode_atts( array('shortcode' => '', 'filter' => '' ), $atts ) );
+        $filter = array_key_exists('filter', $atts) ? $atts['filter'] : 'shortcode_wrapper';
         
+        ob_start();
+        
+        echo do_shortcode($content);
+        
+        $result = ob_get_clean();
+        
+        return apply_filters( $filter, $result );
     }
-
 }

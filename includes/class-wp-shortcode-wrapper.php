@@ -197,7 +197,7 @@ class Wp_Shortcode_Wrapper {
 	 */
         private function define_shortcode_tags() 
         {
-            $plugin_shortcodes = new Wp_Shortcode_Wrapper( $this->get_plugin_name(), $this->get_version(), plugin_dir_path( dirname( __FILE__ ) ), $this->PlayService);
+            $plugin_shortcodes = new Wp_Shortcode_Wrapper_Shortcodes( $this->get_plugin_name(), $this->get_version());
             
             $this->loader->add_shortcode( 'shortcode_wrapper', $plugin_shortcodes, 'shortcode_wrapper' );
         }
